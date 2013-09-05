@@ -28,10 +28,11 @@ void loop()
   
   // If max time achieved, do shindig
   if(seconds >= 30) {
+    lcd.clear(WHITE);
+    finalDisplay();
     while (digitalRead(buttons[2])) {
       seconds = 0;
       tenthsecs = 0;
-      finalDisplay();
     }
   }
   
@@ -59,12 +60,18 @@ void loop()
 
 void decrement()
 {
-  tenthsecs--;
-  if (tenthsecs == 0)
+  if ((tenthsecs == 0) && (seconds == 0))
   {
-    tenthsecs = 9;  // If tenthsecs is 10, set it back to 0
-    seconds--;    // and increase seconds by 1
+    tenthsecs=0;
   }
+  else if (tenthsecs>0)
+  {
+    tenthsecs--;
+  }
+  else if (tenthsecs == 0) {
+      seconds--;    // and decrease seconds by 1
+      tenthsecs = 9;
+  } 
 }
 
 void increment()
@@ -84,12 +91,12 @@ void increment()
 void displayDigitalTime(int stenth, int s)
 {
   char timeChar[11] = {
-    'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'    };
+    'x', 'x', 0x2e, 'x', 'x', 'x', 'x', 'x'    };
 
   /* Gotta turn the values into individual integers */
   timeChar[0] = s/10;
   timeChar[1] = s - (timeChar[0] * 10);
-  timeChar[2] = '.';
+  //timeChar[2] = '.';
   timeChar[3] = stenth;
 
   /* once we have each integer separated, we need to turn them
@@ -117,10 +124,10 @@ void displayDigitalTime(int stenth, int s)
 
 void finalDisplay() 
 {
-  lcd.setStr("EpiCool", 110, 10, SLATE, WHITE);
-  lcd.setCircle(66, 66, 50, BLUE, 3);
+  lcd.setStr("EpiCool", 60, 20, SLATE, WHITE);
+  lcd.setCircle(66, 66, 40, BLUE, 3);
   lcd.setLine(52,85,80,95,BLUE);
   lcd.setLine(52,95,80,85,BLUE);
   lcd.setLine(41,90,91,90,BLUE);
-  lcd.setLine(66,100,66,80,BLUE);
+  lcd.setLine(66,100,66,60,BLUE); // last was 80
 }
