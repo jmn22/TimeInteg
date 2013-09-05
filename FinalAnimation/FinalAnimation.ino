@@ -1,5 +1,3 @@
-
-
 #include <ColorLCDShield.h>
 
 LCDShield lcd;  // Creates an LCDShield, named lcd
@@ -10,7 +8,7 @@ void setup()
   lcd.contrast(-51);  // -51's usually a good contrast value
   lcd.clear(WHITE);  // clear the screen
   
-  lcd.setStr("EpiCool", 110, 10, SLATE, WHITE);
+  lcd.setStr("EpiCool", 2, 20, SLATE, WHITE);
   lcd.setCircle(66, 66, 50, BLUE, 3);
   lcd.setLine(52,85,80,95,BLUE);
   lcd.setLine(52,95,80,85,BLUE);
@@ -21,3 +19,4 @@ void setup()
 void loop()
 {
 }
+
