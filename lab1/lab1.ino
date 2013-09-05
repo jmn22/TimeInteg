@@ -7,9 +7,15 @@ signed char cont = -51;  // Philips medium contrast
 
 void setup()
 {
+  Serial.begin(9600);
+  for (int i=0; i<3; i++)
+  {
+    pinMode(buttons[i], INPUT);  // Set buttons as inputs
+    digitalWrite(buttons[i], HIGH);  // Activate internal pull-up
+  }
   lcd.init(PHILIPS);  // Initializes lcd, using an PHILIPS driver
   lcd.contrast(cont);  // 40 for a contrast value
-  lcd.clear(TEAL);  // Teal startup screen
+  lcd.clear(WHITE);  // Teal startup screen
 }
 
 void loop()
