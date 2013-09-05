@@ -34,19 +34,20 @@ void loop()
   }
   
   // Check for button presses
-  boolean firstTime = 1;
+  boolean isSet = 0;
   while (millis() % 100) {
-    while (firstTime) {
+    if !(isSet) {
       b1 = digitalRead(buttons[0]);
       b2 = digitalRead(buttons[1]);
       if(b1&&b2) {
         // do error/nothing
       } else if(b1) {
+        isSet = 1;
         // incrememnt
       } else if(b2) {
+        isSet = 1;
         // decrement
       }
-      firstTime = 0;
     }
   }
   // Write value to display
