@@ -91,26 +91,26 @@ void increment()
 void displayDigitalTime(int stenth, int s)
 {
   char timeChar[11] = {
-    'x', 'x', 0x2e, 'x', 'x', 'x', 'x', 'x'    };
+    'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'    };
 
   /* Gotta turn the values into individual integers */
   timeChar[0] = s/10;
   timeChar[1] = s - (timeChar[0] * 10);
-  //timeChar[2] = '.';
   timeChar[3] = stenth;
 
   /* once we have each integer separated, we need to turn them
    into displayable characters. Adding 0x30 does this (check an
    ASCII table. We set the colons to 0x0A initially, this will
    turn them into the proper 0x3A.*/
-  for (int i=0; i<4; i++)
+  for (int i=0; i<4; i++) {
     timeChar[i] += 0x30;
-
+  }
+  
+  timeChar[2] = '.';
   timeChar[4] = ' ';  // add a space between the time and 'sec'
-
-    timeChar[5] = 's';
-    timeChar[6] = 'e';
-    timeChar[7] = 'c';
+  timeChar[5] = 's';
+  timeChar[6] = 'e';
+  timeChar[7] = 'c';
 
   /* add some blank spaces after the time, otherwise it'll display
    unwanted characters */
@@ -118,8 +118,10 @@ void displayDigitalTime(int stenth, int s)
   timeChar[9] = ' ';
   timeChar[10] = ' ';
   timeChar[11] = ' ';
+
   /* Print the time on the clock */
   lcd.setStr(timeChar, 50, 20, BLUE, WHITE);
+  
 }
 
 void finalDisplay() 
