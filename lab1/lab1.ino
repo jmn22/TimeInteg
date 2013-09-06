@@ -40,8 +40,8 @@ void loop()
   boolean isSet = 0;
   while (millis() % 100) {
     if (!isSet) {
-      b1 = digitalRead(buttons[0]);
-      b2 = digitalRead(buttons[1]);
+      b1 = !digitalRead(buttons[0]);
+      b2 = !digitalRead(buttons[1]);
       if(b1&&b2) {
         // do error/nothing
       } else if(b1) {
