@@ -21,8 +21,8 @@ void setup()
     digitalWrite(buttons[i], HIGH);  // Activate internal pull-up
   }
   lcd.init(PHILIPS);  // Initializes lcd, using an PHILIPS driver
-  lcd.contrast(cont);  // 40 for a contrast value
-  lcd.clear(WHITE);  // Teal startup screen
+  lcd.contrast(cont);  
+  lcd.clear(WHITE); 
 }
 
 void loop()
