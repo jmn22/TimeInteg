@@ -126,10 +126,10 @@ void displayDigitalTime(int stenth, int s)
 
 void finalDisplay() 
 {
-  lcd.setStr("EpiCool", 60, 20, SLATE, WHITE);
+  lcd.setStr("EpiCool", 60, 10, SLATE, WHITE);
   lcd.setCircle(66, 66, 40, BLUE, 3);
   lcd.setLine(52,85,80,95,BLUE);
   lcd.setLine(52,95,80,85,BLUE);
   lcd.setLine(41,90,91,90,BLUE);
-  lcd.setLine(66,100,66,60,BLUE); // last was 80
+  lcd.setLine(66,100,66,80,BLUE);
 }
